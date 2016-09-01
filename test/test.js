@@ -591,6 +591,17 @@
             });
         });
         checkApi('ipv6');
+
+        describe('is.uuid', function () {
+            it('should return true if given value is a valid UUID', function () {
+                expect(is.uuid('64b34b70-fab3-11e5-b9a6-ad5b94abe168')).to.be.true;
+            });
+            it('should return false if given value is not a valid UUID', function () {
+                expect(is.uuid('GGGGGGGG-GGGG-GGGG-GGGG-GGGGGGGGGGGG')).to.be.false; // all `G`
+                expect(is.uuid('64b34b70-fab-11e5-b9a6-ad5b94abe168')).to.be.false; // wrong length
+            });
+        });
+        checkApi('uuid');
     });
 
     describe('string checks', function() {
